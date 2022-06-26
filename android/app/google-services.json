@@ -1,0 +1,150 @@
+{
+  "project_info": {
+    "project_number": "779256341790",
+    "project_id": "easy-talk-329310",
+    "storage_bucket": "easy-talk-329310.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779256341790:android:258d7211ca0bb168a9d50f",
+        "android_client_info": {
+          "package_name": "com.easytalk.easytalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "779256341790-d8ilggpn97jbhdmeijtd2s16prot27o1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.easytalk.easytalk",
+            "certificate_hash": "02aa91a0cc3821d010a29c0ffc2c948bf1a8cec8"
+          }
+        },
+        {
+          "client_id": "779256341790-ioo5sg47u26g7mnhv1a4m8pcreegm3il.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.easytalk.easytalk",
+            "certificate_hash": "e7384f6bdcac00c7a3d43b4428e825dfb2efac30"
+          }
+        },
+        {
+          "client_id": "779256341790-rp8010oogn9ind3bk9vf4en9euld5qds.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.easytalk.easytalk",
+            "certificate_hash": "886500d9e5af894a415c47174dec50ccfae7edf2"
+          }
+        },
+        {
+          "client_id": "779256341790-hljundv268tlrbcvilufms9btn22efvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwqbKm1z2VQcAdL68lI0TTHAbZqsh3-dc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "779256341790-hljundv268tlrbcvilufms9btn22efvf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "779256341790-4qetkhb6fevd2fottrp0ugejegs4v2je.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.easytalk.easytalkk"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779256341790:android:830bf84b2a3addf6a9d50f",
+        "android_client_info": {
+          "package_name": "com.example.easy_talk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "779256341790-2p9kdua03ci76qcvrq4bp8nnmhr3nei5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.easy_talk",
+            "certificate_hash": "02aa91a0cc3821d010a29c0ffc2c948bf1a8cec8"
+          }
+        },
+        {
+          "client_id": "779256341790-hljundv268tlrbcvilufms9btn22efvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwqbKm1z2VQcAdL68lI0TTHAbZqsh3-dc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "779256341790-hljundv268tlrbcvilufms9btn22efvf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "779256341790-4qetkhb6fevd2fottrp0ugejegs4v2je.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.easytalk.easytalkk"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779256341790:android:e5e314085c88386ea9d50f",
+        "android_client_info": {
+          "package_name": "com.example.translationchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "779256341790-hljundv268tlrbcvilufms9btn22efvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwqbKm1z2VQcAdL68lI0TTHAbZqsh3-dc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "779256341790-hljundv268tlrbcvilufms9btn22efvf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "779256341790-4qetkhb6fevd2fottrp0ugejegs4v2je.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.easytalk.easytalkk"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,15 @@
+const String map ="assests/Group988.png";
+const String map2="assests/Group3.png";
+const String emailIcon="assests/Group 444.png";
+const String phoneIcon="assests/Group5.png";
+const String logoLogin="assests/Group12.png";
+const String contactUs="assests/Group1297.png";
+const String backGround="assests/Group23.png";
+const String iconActive="assests/Group715.png";
+const String setting="assests/Group 877.png";
+const String logo="assests/ic_launcher.png";
+const String logo2="android/app/src/main/res/mipmap-mdpi/ic_launcher.png";
+const String logoCompany="assests/Group 1337.png";
+const String logoFace="assests/Group 1332.png";
+const String logoTwitter="assests/Group 1334.png";
+const String logoIns="assests/Group 1336.png";
