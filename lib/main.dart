@@ -33,6 +33,15 @@ Future<void> main() async {
       badge: true,
       sound: true,
     );
+    await messaging.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      provisional: true,
+      criticalAlert: false,
+      sound: true,
+    );
   }
   NotificationSettings settings = await messaging.requestPermission(
     alert: true,
