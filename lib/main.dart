@@ -1,11 +1,15 @@
 import 'dart:io';
 
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_badger/flutter_app_badger.dart';
+import 'package:flutter_badged/badge_position.dart';
+import 'package:flutter_badged/flutter_badge.dart';
 import 'package:provider/provider.dart';
 import 'package:translationchat/Screens/room/roomscreen.dart';
 import 'package:translationchat/provider/chatprovider.dart';
@@ -16,17 +20,66 @@ import 'Screens/introSlider/introslider.dart';
 import 'Screens/qr_code/qr_scanner.dart';
 import 'Screens/settings/settings.dart';
 import 'Screens/splashScreen/splash.dart';
-
+var dateTime = DateTime.now();
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async
+{
+  await Firebase.initializeApp();
+  FlutterBadge(
+    icon: Icon(Icons.message),
+    itemCount: 33,
+    badgeColor: Colors.green,
+    position: BadgePosition.topLeft(),
+    borderRadius: 20.0,
+  );
+  print('on background message');
+  print(message.data.length);
+  AwesomeNotifications().createNotificationFromJsonData(message.data);
+  FlutterAppBadger.updateBadgeCount(message.data.length);
+}
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  FlutterBadge(
+    icon: Icon(Icons.message),
+    itemCount: 33,
+    badgeColor: Colors.green,
+    position: BadgePosition.topLeft(),
+    borderRadius: 20.0,
+  );
   await Firebase.initializeApp();
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-  await FirebaseMessaging.instance
-      .setForegroundNotificationPresentationOptions(
+  FlutterAppBadger.updateBadgeCount(1);
+  AwesomeNotifications().initialize(
+      'resource://drawable/res_app_icon',
+      [
+        NotificationChannel(
+          channelGroupKey: 'basic_test',
+          channelKey: 'basic',
+          channelName: 'Basic notifications',
+          channelDescription: 'Notification channel for basic tests',
+          channelShowBadge: true,
+        ),
+      ]
+  );
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
     alert: true,
     badge: true,
     sound: true,
   );
+  await messaging.setForegroundNotificationPresentationOptions(
+    alert: true, // Required to display a heads up notification
+    badge: true,
+    sound: true,
+  );
+  await messaging.requestPermission(
+    alert: true,
+    announcement: false,
+    badge: true,
+    carPlay: false,
+    provisional: true,
+    criticalAlert: false,
+    sound: true,
+  );
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   if(Platform.isIOS){
     await messaging.setForegroundNotificationPresentationOptions(
       alert: true, // Required to display a heads up notification

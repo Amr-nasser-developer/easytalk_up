@@ -483,7 +483,7 @@ message(index,bool checkMessage){
             config: Config(
                 columns: 7,
                 // Issue: https://github.com/flutter/flutter/issues/28894
-                emojiSizeMax: 32 * (Platform.isIOS ? 1.30 : 1.0),
+                emojiSizeMax: 64 * (Platform.isIOS ? 1.30 : 1.0),
                 verticalSpacing: 0,
                 horizontalSpacing: 0,
                 initCategory: Category.RECENT,

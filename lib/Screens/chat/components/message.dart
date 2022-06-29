@@ -102,7 +102,7 @@ class MessageComponents extends StatelessWidget {
                     topRight: Radius.circular(15)),
               ),
               child: Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: validationService.messageList[index].from != user1
                       ? textGlobalBlackBold14(
                           context: context,
