@@ -49,13 +49,13 @@ textGlobalNormalWhite14({required BuildContext context,text}){
   return textGlobal(text:text ,context: context,fontSize: 12.0,color:Colors.white,bold: false);
 }
 textGlobalWhiteBold14({required BuildContext context,text}){
-  return textGlobal(text:text ,context: context,fontSize: 14.0,color:Colors.white,bold: true,lines: 20);
+  return textGlobal(text:text ,context: context,fontSize: 20.0,color:Colors.white,bold: true,lines: 20);
 }
 textGlobalWhiteBold18({required BuildContext context,text}){
   return textGlobal(text:text ,context: context,fontSize: 18.0,color:Colors.white,bold: true);
 }
 textGlobalBlackBold14({required BuildContext context,text}){
-  return textGlobal(text:text ,context: context,fontSize: 14.0,color:Colors.black,bold: true);
+  return textGlobal(text:text ,context: context,fontSize: 18.0,color:Colors.black,bold: true);
 }
 textGlobalWhiteBold12({required BuildContext context,text}){
   return textGlobal(text:text ,context: context,fontSize: 12.0,color:Colors.white,bold: true);
