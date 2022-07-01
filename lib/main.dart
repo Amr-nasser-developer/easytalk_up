@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -17,8 +15,6 @@ import 'package:translationchat/provider/userprovider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'Screens/auth/login.dart';
 import 'Screens/introSlider/introslider.dart';
-import 'Screens/qr_code/qr_scanner.dart';
-import 'Screens/settings/settings.dart';
 import 'Screens/splashScreen/splash.dart';
 var dateTime = DateTime.now();
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async
@@ -32,22 +28,12 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async
     borderRadius: 20.0,
   );
   print('on background message');
-  print(message.data.length);
-  AwesomeNotifications().createNotificationFromJsonData(message.data);
   FlutterAppBadger.updateBadgeCount(message.data.length);
 }
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  FlutterBadge(
-    icon: Icon(Icons.message),
-    itemCount: 33,
-    badgeColor: Colors.green,
-    position: BadgePosition.topLeft(),
-    borderRadius: 20.0,
-  );
   await Firebase.initializeApp();
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-  FlutterAppBadger.updateBadgeCount(1);
   AwesomeNotifications().initialize(
       'resource://drawable/res_app_icon',
       [
@@ -84,7 +70,7 @@ Future<void> main() async {
     await messaging.setForegroundNotificationPresentationOptions(
       alert: true, // Required to display a heads up notification
       badge: true,
-      sound: true,
+      sound: true
     );
     await messaging.requestPermission(
       alert: true,
@@ -137,6 +123,7 @@ class MyApp extends StatelessWidget {
     return FutureBuilder(
       future: Init.instance.initialize(context),
       builder: (context, AsyncSnapshot snapshot) {
+        FlutterAppBadger.removeBadge();
         // Show splash screen while waiting for app resources to load:
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const MaterialApp(home: SplashScreen(),debugShowCheckedModeBanner: false);
