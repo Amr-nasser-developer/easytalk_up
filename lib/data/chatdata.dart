@@ -17,7 +17,6 @@ ServicesHandler service = ServicesHandler();
         ? {
       "translateMessage":translateMessage,
       "message": text,
-
       "creationDt": DateTime.now(),
       "type": "text",
       "from": from,
