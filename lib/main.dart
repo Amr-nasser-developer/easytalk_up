@@ -17,9 +17,14 @@ import 'Screens/auth/login.dart';
 import 'Screens/introSlider/introslider.dart';
 import 'Screens/splashScreen/splash.dart';
 var dateTime = DateTime.now();
+
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async
 {
   await Firebase.initializeApp();
+  String? tokenFcm = await FirebaseMessaging.instance.getToken();
+  if(tokenFcm!.isNotEmpty){
+    FlutterAppBadger.updateBadgeCount(tokenFcm.length);
+  }
   FlutterBadge(
     icon: Icon(Icons.message),
     itemCount: 33,
@@ -33,6 +38,8 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   AwesomeNotifications().initialize(
       'resource://drawable/res_app_icon',
@@ -62,7 +69,7 @@ Future<void> main() async {
     badge: true,
     carPlay: false,
     provisional: true,
-    criticalAlert: false,
+    criticalAlert: true,
     sound: true,
   );
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
@@ -78,9 +85,13 @@ Future<void> main() async {
       badge: true,
       carPlay: false,
       provisional: true,
-      criticalAlert: false,
+      criticalAlert: true,
       sound: true,
     );
+  }
+  String? tokenFcm = await FirebaseMessaging.instance.getToken();
+  if(tokenFcm!.isNotEmpty){
+    FlutterAppBadger.updateBadgeCount(tokenFcm.length);
   }
   NotificationSettings settings = await messaging.requestPermission(
     alert: true,
@@ -88,7 +99,7 @@ Future<void> main() async {
     badge: true,
     carPlay: false,
     provisional: true,
-    criticalAlert: false,
+    criticalAlert: true,
     sound: true,
   );
   if (settings.authorizationStatus == AuthorizationStatus.authorized) {

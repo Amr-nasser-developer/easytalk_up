@@ -15,6 +15,7 @@ import 'package:translationchat/provider/userprovider.dart';
 import 'package:translationchat/shared/components/sizedboxglobal.dart';
 import 'package:translationchat/shared/text_global.dart';
 import 'package:translationchat/shared/widgets/circleavatatimage.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'navigator.dart';
 
@@ -90,38 +91,36 @@ context: context,
                 child: createDrawerBodyItem(
                     context: context,
                     icon: Icons.share,
-                    text: 'مشاركه التطبيق عبر الاندوريد  ',
+                    text: 'مشاركه التطبيق ',
                     onTap: (){
-
-                      Share.share("https://play.google.com/store/apps/details?id=com.easytalk.easytalk");
+                      _launchURL();
                     }
 
                 ),
               ),
 
-              GestureDetector(
-                onTap: (){
-
-                },
-                child: createDrawerBodyItem(
-                    context: context,
-                    icon: Icons.share,
-                    text: 'مشاركه التطبيق عبر الايفون   ',
-                    onTap: (){
-
-                      Share.share("https://apps.apple.com/eg/app/easytalk-%D8%A7%D9%8A%D8%B2%D9%8A-%D8%AA%D9%88%D9%83/id1605351891");
-
-                    }
-
-                ),
-              ),
+              // GestureDetector(
+              //   onTap: (){
+              //
+              //   },
+              //   child: createDrawerBodyItem(
+              //       context: context,
+              //       icon: Icons.share,
+              //       text: 'مشاركه التطبيق عبر الايفون   ',
+              //       onTap: (){
+              //
+              //         Share.share("https://apps.apple.com/eg/app/easytalk-%D8%A7%D9%8A%D8%B2%D9%8A-%D8%AA%D9%88%D9%83/id1605351891");
+              //
+              //       }
+              //
+              //   ),
+              // ),
             SizedBox(height: 10,),
             SizedBox(
-              height: 150,
-
+              height: 250,
               child: SfBarcodeGenerator(
            barColor: Colors.white,
-                value:"https://apps.apple.com/eg/app/easytalk-%D8%A7%D9%8A%D8%B2%D9%8A-%D8%AA%D9%88%D9%83/id1605351891",
+                value:"http://easytalkapp.dnbscy.com/",
                 symbology: QRCode(),
                 showValue: false,
               ),
@@ -148,6 +147,9 @@ context: context,
 
     );
   }
+  var _url = 'http://easytalkapp.dnbscy.com/';
+  void _launchURL() async =>
+      await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
 }
 Widget createDrawerBodyItem(
     {required BuildContext context,required IconData icon, required String text, required GestureTapCallback onTap}) {
@@ -204,3 +206,4 @@ Widget createDrawerHeader(BuildContext context) {
         ]),
       );
 }
+
