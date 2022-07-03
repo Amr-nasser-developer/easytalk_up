@@ -120,7 +120,7 @@ context: context,
               height: 250,
               child: SfBarcodeGenerator(
            barColor: Colors.white,
-                value:"https://dnbscy.com/",
+                value:"http://Easytalkapp.dnbscy.com",
                 symbology: QRCode(),
                 showValue: false,
               ),
@@ -147,7 +147,7 @@ context: context,
 
     );
   }
-  var _url = 'https://dnbscy.com/';
+  var _url = 'http://Easytalkapp.dnbscy.com';
   void _launchURL() async =>
       await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
 }

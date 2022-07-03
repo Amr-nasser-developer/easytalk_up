@@ -55,7 +55,7 @@ textGlobalWhiteBold18({required BuildContext context,text}){
   return textGlobal(text:text ,context: context,fontSize: 18.0,color:Colors.white,bold: true);
 }
 textGlobalBlackBold14({required BuildContext context,text}){
-  return textGlobal(text:text ,context: context,fontSize: 18.0,color:Colors.black,bold: true);
+  return textGlobal(text:text ,context: context,fontSize: 18.0,color:Colors.black,bold: true, lines: 500);
 }
 textGlobalWhiteBold12({required BuildContext context,text}){
   return textGlobal(text:text ,context: context,fontSize: 12.0,color:Colors.white,bold: true);
