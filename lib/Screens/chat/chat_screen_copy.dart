@@ -619,7 +619,7 @@ Widget checkImage(BuildContext context){
     final validationService = Provider.of<ChatProvider>(context,listen: false);
     return Column(children: [
 
-      textGlobalBlackNormal16(context: context,text: "هل انت متاكد من هذه الخطوه؟"),
+      textGlobalBlackNormal16(context: context,text: "هل تريد ارسال هذه الصوره؟"),
       SizedBox(height: 20,),
       GestureDetector(onTap: () async {
 print("fff");
