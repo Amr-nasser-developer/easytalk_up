@@ -18,28 +18,16 @@ import 'Screens/introSlider/introslider.dart';
 import 'Screens/splashScreen/splash.dart';
 var dateTime = DateTime.now();
 
-Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async
-{
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // If you're going to use other Firebase services in the background, such as Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
   await Firebase.initializeApp();
-  String? tokenFcm = await FirebaseMessaging.instance.getToken();
-  if(tokenFcm!.isNotEmpty){
-    FlutterAppBadger.updateBadgeCount(tokenFcm.length);
-  }
-  FlutterBadge(
-    icon: Icon(Icons.message),
-    itemCount: 33,
-    badgeColor: Colors.green,
-    position: BadgePosition.topLeft(),
-    borderRadius: 20.0,
-  );
-  print('on background message');
-  FlutterAppBadger.updateBadgeCount(message.data.length);
+
+  print("Handling a background message: ${message.messageId}");
 }
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
-
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   AwesomeNotifications().initialize(
       'resource://drawable/res_app_icon',
@@ -72,7 +60,15 @@ Future<void> main() async {
     criticalAlert: true,
     sound: true,
   );
-  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    print('Got a message whilst in the foreground!');
+    print('Message data: ${message.data}');
+
+    if (message.notification != null) {
+      print('Message also contained a notification: ${message.notification}');
+    }
+  });
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   if(Platform.isIOS){
     await messaging.setForegroundNotificationPresentationOptions(
       alert: true, // Required to display a heads up notification
@@ -89,19 +85,19 @@ Future<void> main() async {
       sound: true,
     );
   }
-  String? tokenFcm = await FirebaseMessaging.instance.getToken();
-  if(tokenFcm!.isNotEmpty){
-    FlutterAppBadger.updateBadgeCount(tokenFcm.length);
-  }
   NotificationSettings settings = await messaging.requestPermission(
     alert: true,
     announcement: false,
     badge: true,
     carPlay: false,
-    provisional: true,
-    criticalAlert: true,
+    criticalAlert: false,
+    provisional: false,
     sound: true,
   );
+  String? tokenFcm = await FirebaseMessaging.instance.getToken();
+  if(tokenFcm!.isNotEmpty){
+    FlutterAppBadger.updateBadgeCount(tokenFcm.length);
+  }
   if (settings.authorizationStatus == AuthorizationStatus.authorized) {
     print('User granted permission');
   } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
@@ -118,6 +114,7 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (_) => UserProvider(),)
       //create: (_) => LocalizationProvider(),
     ],
+
     child: const MyApp(),
   ));
 }
