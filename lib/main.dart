@@ -24,15 +24,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   AppleNotificationSetting.enabled;
   message.contentAvailable;
-
-  AwesomeNotifications().createNotification(
-      content: NotificationContent(
-          id: 10,
-          channelKey: 'basic_channel',
-          title: '${message.notification!.title}',
-          body: '${message.notification!.body}'
-      )
-  );
   print("Handling a background message: ${message.messageId}");
 }
 
@@ -40,34 +31,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-  AwesomeNotifications().initialize(
-    // set the icon to null if you want to use the default app icon
-      'resource://drawable/res_app_icon',
-      [
-        NotificationChannel(
-            channelGroupKey: 'basic_channel_group',
-            channelKey: 'basic_channel',
-            channelName: 'Basic notifications',
-            channelDescription: 'Notification channel for basic tests',
-            defaultColor: Color(0xFF9D50DD),
-            ledColor: Colors.white)
-      ],
-      // Channel groups are only visual and are not required
-      channelGroups: [
-        NotificationChannelGroup(
-            channelGroupkey: 'basic_channel_group',
-            channelGroupName: 'Basic group')
-      ],
-      debug: true
-  );
-  Future buildNoti(BuildContext context)async{
-    await Navigator.push(context, MaterialPageRoute(builder: (context) => RoomScreen()));
-  }
-  AwesomeNotifications().actionStream.listen(
-          (ReceivedNotification receivedNotification){
 
-      }
-  );
   AwesomeNotifications().requestPermissionToSendNotifications();
   AppleNotificationSetting.enabled;
   AppleNotificationSetting.values;
@@ -103,6 +67,8 @@ Future<void> main() async {
     AppleNotificationSetting.enabled;
     if (message.notification != null) {
       print('Message also contained a notification: ${message.notification}');
+    }else{
+      print('null');
     }
   });
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
@@ -113,13 +79,14 @@ Future<void> main() async {
       badge: true,
       sound: true
     );
+    NotificationSettings settings = await messaging.getNotificationSettings();
     await messaging.requestPermission(
       alert: true,
       announcement: false,
       badge: true,
       carPlay: false,
+      criticalAlert: false,
       provisional: true,
-      criticalAlert: true,
       sound: true,
     );
   }
