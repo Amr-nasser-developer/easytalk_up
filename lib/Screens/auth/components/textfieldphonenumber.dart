@@ -25,9 +25,9 @@ Widget textFieldPhoneNumber(TextEditingController controller,BuildContext contex
         controller:controller ,hint: "5xxxxxxx",widthBorder:2.0)),
       Icon(Icons.keyboard_arrow_down_sharp,color: black,),
       sizedBoxGlobalWidth10(),
-      GestureDetector(onTap: (){
+      GestureDetector(
+          onTap: (){
         showCountryPicker(
-
           context: context,
           showPhoneCode: true, // optional. Shows phone code before the country name.
           countryListTheme: const CountryListThemeData(

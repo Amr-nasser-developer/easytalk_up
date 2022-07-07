@@ -9,6 +9,7 @@ import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:flutter_badged/badge_position.dart';
 import 'package:flutter_badged/flutter_badge.dart';
 import 'package:provider/provider.dart';
+import 'package:translationchat/Screens/chat/chat_screen_copy.dart';
 import 'package:translationchat/Screens/room/roomscreen.dart';
 import 'package:translationchat/provider/chatprovider.dart';
 import 'package:translationchat/provider/userprovider.dart';
@@ -120,18 +121,19 @@ Future<void> main() async {
       //create: (_) => LocalizationProvider(),
     ],
 
-    child: const MyApp(),
+    child:  MyApp(message: messaging),
   ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+
+var message;
+MyApp({this.message});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     final validationServiceUser = Provider.of<UserProvider>(context,listen: false);
-
 
     return FutureBuilder(
       future: Init.instance.initialize(context),
